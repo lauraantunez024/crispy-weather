@@ -1,0 +1,16 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "/Users/manueldelaportilla/Desktop/laura-programming/crispy-weather/pages/inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_356be806"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/manueldelaportilla/Desktop/laura-programming/crispy-weather/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_22d1b6fe"
+  }
+]
