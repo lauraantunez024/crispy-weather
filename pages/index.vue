@@ -1,126 +1,138 @@
 <template>
-
   <div>
 
 
-  <v-row class="row ma-5 pa-5">
-    <v-col-1>
-      <v-form @submit.prevent="$fetch">
-        <v-text-field class="ma-0" filled rounded dense height="80" label="Enter City" v-model="city">
-        </v-text-field>
-      </v-form>
-    </v-col-1>
-  </v-row>
+    <v-row class="row ma-5 pa-5">
+      <v-col-1>
+        <v-form @submit.prevent="$fetch">
+          <v-text-field class="ma-0" filled rounded dense height="80" label="Enter City" v-model="city">
+          </v-text-field>
+        </v-form>
+      </v-col-1>
+    </v-row>
     <v-container class="content">
       <v-col-9>
         <div class="text-h1 d-flex justify-center title-card">
-          {{ weather.name }} 
+          {{ weather.name }}
         </div>
         <br>
         <WeatherCard id="temperature-center" v-if="formSubmitted">
           <template v-slot:header>
             <h3 class="text-h2">
-              Today's forecast <img :src="weatherIcon" :alt="weatherDescription">
+              Today's forecast <img :src="weatherIcon" :alt="oneCall.current.weather[0].description">
 
             </h3>
           </template>
           <template v-slot:time>
-             <p>{{ now }} </p>
+            <p id="time">{{ now }} </p>
           </template>
           <template v-slot:main>
             <p>
               Current: {{ current }}°
-            </p> 
+            </p>
             <p>
               Feels like: {{ feels_like }}°
             </p>
             <br>
             <p>
-              Highest Temperature: {{ high }}°
+              UV: {{ high }}%
             </p>
-            <p>
-              Lowest Temperature: {{ low }}°
-            </p>
+
             <br>
             <p>
-              Humidity: {{ weather.main.humidity }}%
-            </p> 
-            <p>
-              Wind speed: {{ weather.wind.speed }}mph
+              Humidity: {{ humidity }}%
             </p>
-       
+
+
           </template>
         </WeatherCard>
       </v-col-9>
-  </v-container>
+      <v-col-9>
+        <div v-if="formSubmitted" class="fiveDay">
+          <FiveDayForecast v-for="(day, index) in oneCall.daily" :key="index" :weatherSummary="day.summary"
+            :weatherDescription="day.weather[0].description" :maxTemp="day.temp.max" :minTemp="day.temp.min"
+            :chanceOfRain="day.rain" :humidity="day.humidity">
 
-</div>
+          </FiveDayForecast>
 
+        </div>
 
+      </v-col-9>
+    </v-container>
 
-
-  <!-- 
-  <div>
-
-  
-
-    <v-flex>
-      <WeatherCard id="humidity">
-
-      </WeatherCard>
-    </v-flex>
-  </div> -->
+  </div>
 </template>
 
 <script>
 import WeatherCard from '@/components/WeatherCard.vue';
+import FiveDayForecast from '@/components/FiveDayForecast.vue'
 export default {
   name: 'IndexPage',
   components: {
-    WeatherCard
+    WeatherCard,
+    FiveDayForecast
   },
   data() {
     return {
       city: '',
       weather: {},
       formSubmitted: false,
+      oneCall: {}
+    }
+  },
+  async asyncData({ $axios }) {
+    const firstApiResponse = await $axios.$get('https://api.example.com/first-api')
+    const secondApiResponse = await $axios.$get('https://api.example.com/second-api')
+
+    return {
+      firstApiData: firstApiResponse.data,
+      secondApiData: secondApiResponse.data
     }
   },
   async fetch() {
-    this.weather =
-      await this.$axios
-        .$get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=imperial&appid=cf37cb15ac26f522e8af6d6448e99395`)
-        .then(res => (this.weather = res))
-    this.formSubmitted = true;
+      this.weather =
+        await this.$axios
+          .$get()
+          .then(res => (this.weather = res))
+
+      this.oneCall =
+        await this.$axios
+          .$get(`https://api.openweathermap.org/data/3.0/onecall?lat=${this.weather.coord.lat}&lon=${this.weather.coord.lon}&units=imperial&appid=cf37cb15ac26f522e8af6d6448e99395`)
+          .then(res => console.log(res))
+          .then(res => (this.oneCall = res))
+      this.formSubmitted = true;
+
   },
   computed: {
     now() {
       return new Date()
     },
     current() {
-      return Math.ceil(this.weather.main.temp)
+      return Math.ceil(this.oneCall.current.temp)
     },
     feels_like() {
-      return Math.ceil(this.weather.main.feels_like)
+      return Math.ceil(this.oneCall.current.feels_like.day)
     },
-    high() {
-      return Math.ceil(this.weather.main.temp_max)
+    humidity() {
+      return Math.ceil(this.oneCall.current.humidity)
     },
-    low() {
-      return Math.ceil(this.weather.main.temp_min)
+    UV() {
+      return Math.ceil(this.oneCall.current.uvi)
     },
     weatherIcon() {
-      return "https://openweathermap.org/img/wn/" + this.weather.weather[0].icon + "@2x.png"
+      return "https://openweathermap.org/img/wn/" + this.oneCall.current.weather[0].icon + "@2x.png"
     },
-    weatherDescription() {
-      return "https://openweathermap.org/img/wn/" + this.weather.weather[0].description + "@2x.png"
-    }
+
+
   }
 }
 </script>
 
 
 <style  scoped>
+.fiveDay {
+  display: inline;
+}
 
 .content {
   margin: auto;
@@ -149,6 +161,9 @@ p {
   margin-top: 20px;
 }
 
+#time {
+  font-size: 18px;
+}
 
 
 
