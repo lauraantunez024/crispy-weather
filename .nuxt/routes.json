@@ -2,15 +2,15 @@
   {
     "name": "inspire",
     "path": "/inspire",
-    "component": "/Users/manueldelaportilla/Desktop/laura-programming/crispy-weather/pages/inspire.vue",
+    "component": "/Users/beatriz/Desktop/Laura/crispy-weather/pages/inspire.vue",
     "chunkName": "pages/inspire",
-    "_name": "_356be806"
+    "_name": "_9ffd9654"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/manueldelaportilla/Desktop/laura-programming/crispy-weather/pages/index.vue",
+    "component": "/Users/beatriz/Desktop/Laura/crispy-weather/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_22d1b6fe"
+    "_name": "_c6181064"
   }
 ]

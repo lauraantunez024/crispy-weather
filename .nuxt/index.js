@@ -12,12 +12,12 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_2256eaca from 'nuxt_plugin_plugin_2256eaca' // Source: ./components/plugin.js (mode: 'all')
-import nuxt_plugin_plugin_7dd35d64 from 'nuxt_plugin_plugin_7dd35d64' // Source: ./vuetify/plugin.js (mode: 'all')
-import nuxt_plugin_workbox_6f8231fc from 'nuxt_plugin_workbox_6f8231fc' // Source: ./workbox.js (mode: 'client')
-import nuxt_plugin_metaplugin_c91085e2 from 'nuxt_plugin_metaplugin_c91085e2' // Source: ./pwa/meta.plugin.js (mode: 'all')
-import nuxt_plugin_iconplugin_bfc13afa from 'nuxt_plugin_iconplugin_bfc13afa' // Source: ./pwa/icon.plugin.js (mode: 'all')
-import nuxt_plugin_axios_a2891640 from 'nuxt_plugin_axios_a2891640' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_plugin_08a307fa from 'nuxt_plugin_plugin_08a307fa' // Source: ./components/plugin.js (mode: 'all')
+import nuxt_plugin_plugin_494fce34 from 'nuxt_plugin_plugin_494fce34' // Source: ./vuetify/plugin.js (mode: 'all')
+import nuxt_plugin_workbox_39a80b2c from 'nuxt_plugin_workbox_39a80b2c' // Source: ./workbox.js (mode: 'client')
+import nuxt_plugin_metaplugin_3f89663f from 'nuxt_plugin_metaplugin_3f89663f' // Source: ./pwa/meta.plugin.js (mode: 'all')
+import nuxt_plugin_iconplugin_44310bb3 from 'nuxt_plugin_iconplugin_44310bb3' // Source: ./pwa/icon.plugin.js (mode: 'all')
+import nuxt_plugin_axios_cc344be0 from 'nuxt_plugin_axios_cc344be0' // Source: ./axios.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -68,7 +68,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"titleTemplate":"%s - crispy-weather","title":"crispy-weather","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
+    head: {"titleTemplate":"%s - crispy-weather","title":"crispy-weather","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"},{"hid":"charset","charset":"utf-8"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"crispy-weather"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"crispy-weather"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"crispy-weather"},{"hid":"og:description","name":"og:description","property":"og:description","content":"## Build Setup"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"},{"hid":"shortcut-icon","rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64x64.e3e9fb.png"},{"hid":"apple-touch-icon","rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512x512.e3e9fb.png","sizes":"512x512"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.7a14b3aa.json","hid":"manifest"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
 
     router,
     nuxt: {
@@ -183,28 +183,28 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_2256eaca === 'function') {
-    await nuxt_plugin_plugin_2256eaca(app.context, inject)
+  if (typeof nuxt_plugin_plugin_08a307fa === 'function') {
+    await nuxt_plugin_plugin_08a307fa(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_7dd35d64 === 'function') {
-    await nuxt_plugin_plugin_7dd35d64(app.context, inject)
+  if (typeof nuxt_plugin_plugin_494fce34 === 'function') {
+    await nuxt_plugin_plugin_494fce34(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_workbox_6f8231fc === 'function') {
-    await nuxt_plugin_workbox_6f8231fc(app.context, inject)
+  if (process.client && typeof nuxt_plugin_workbox_39a80b2c === 'function') {
+    await nuxt_plugin_workbox_39a80b2c(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_metaplugin_c91085e2 === 'function') {
-    await nuxt_plugin_metaplugin_c91085e2(app.context, inject)
+  if (typeof nuxt_plugin_metaplugin_3f89663f === 'function') {
+    await nuxt_plugin_metaplugin_3f89663f(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_iconplugin_bfc13afa === 'function') {
-    await nuxt_plugin_iconplugin_bfc13afa(app.context, inject)
+  if (typeof nuxt_plugin_iconplugin_44310bb3 === 'function') {
+    await nuxt_plugin_iconplugin_44310bb3(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_a2891640 === 'function') {
-    await nuxt_plugin_axios_a2891640(app.context, inject)
+  if (typeof nuxt_plugin_axios_cc344be0 === 'function') {
+    await nuxt_plugin_axios_cc344be0(app.context, inject)
   }
 
   // Lock enablePreview in context

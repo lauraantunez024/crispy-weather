@@ -1,4 +1,7 @@
 {
+  "FiveDayForecast": {
+    "description": "Auto imported from components/FiveDayForecast.vue"
+  },
   "NuxtLogo": {
     "description": "Auto imported from components/NuxtLogo.vue"
   },
