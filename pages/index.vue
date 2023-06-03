@@ -53,6 +53,19 @@
             :weatherDescription="day.weather[0].description" :maxTemp="day.temp.max" :minTemp="day.temp.min"
             :chanceOfRain="day.rain" :humidity="day.humidity">
 
+
+          </FiveDayForecast>
+
+        </div>
+
+      </v-col-9>
+  </v-container>
+
+</div>
+
+
+
+
           </FiveDayForecast>
 
         </div>
@@ -80,19 +93,10 @@ export default {
       oneCall: {}
     }
   },
-  async asyncData({ $axios }) {
-    const firstApiResponse = await $axios.$get('https://api.example.com/first-api')
-    const secondApiResponse = await $axios.$get('https://api.example.com/second-api')
-
-    return {
-      firstApiData: firstApiResponse.data,
-      secondApiData: secondApiResponse.data
-    }
-  },
   async fetch() {
       this.weather =
         await this.$axios
-          .$get()
+          .$get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=imperial&appid=cf37cb15ac26f522e8af6d6448e99395`)
           .then(res => (this.weather = res))
 
       this.oneCall =
@@ -101,7 +105,6 @@ export default {
           .then(res => console.log(res))
           .then(res => (this.oneCall = res))
       this.formSubmitted = true;
-
   },
   computed: {
     now() {
